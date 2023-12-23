@@ -3,8 +3,16 @@ spring:
     url: jdbc:mysql://localhost:3306/cloud_vendor?useSSL=false
     username: root
     password: Saint123
+  mvc:
+    pathmatch:
+      matching-strategy: ant-path-matcher
+server:
+  port: 8083
+# SQL Dialect makes Hibernate generate better  SQL for the database
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
 
 # JPA Settings
-  jpa:
-    hibernate:
-      ddl-auto: create
+  jpa.hibernate.ddl-auto: create

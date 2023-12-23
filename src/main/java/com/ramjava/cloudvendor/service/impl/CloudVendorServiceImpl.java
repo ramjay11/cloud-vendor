@@ -4,9 +4,11 @@ import com.ramjava.cloudvendor.exception.CloudVendorNotFoundException;
 import com.ramjava.cloudvendor.model.CloudVendor;
 import com.ramjava.cloudvendor.repository.CloudVendorRepository;
 import com.ramjava.cloudvendor.service.CloudVendorService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class CloudVendorServiceImpl implements CloudVendorService {
     CloudVendorRepository cloudVendorRepository;
 

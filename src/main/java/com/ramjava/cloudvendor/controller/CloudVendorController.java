@@ -1,7 +1,11 @@
 package com.ramjava.cloudvendor.controller;
 
 import com.ramjava.cloudvendor.model.CloudVendor;
+import com.ramjava.cloudvendor.response.ResponseHandler;
 import com.ramjava.cloudvendor.service.CloudVendorService;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,8 +21,12 @@ public class CloudVendorController {
     }
 
     @GetMapping("{vendorId}")
-    public CloudVendor getCloudVendorDetails(@PathVariable("vendorId") String vendorId) {
-        return cloudVendorService.getCloudVendor(vendorId);
+    @ApiOperation(value = "Cloud Vendor Id", notes = "Provide Cloud Vendor Details")
+    public ResponseEntity<Object> getCloudVendorDetails(@PathVariable("vendorId") String vendorId) {
+        //return cloudVendorService.getCloudVendor(vendorId);
+        // Custom Response
+        return ResponseHandler.responseBuilder("Requested vendor details are given here", HttpStatus.OK,
+                cloudVendorService.getCloudVendor(vendorId));
     }
     @GetMapping()
     public List<CloudVendor> getAllCloudVendorDetails() {

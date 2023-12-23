@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class CloudVendorExceptionHandler {
     @ExceptionHandler(value = {CloudVendorNotFoundException.class})
     public ResponseEntity<Object> handleCloudVendorNotFoundException(CloudVendorNotFoundException cloudVendorNotFoundException) {
-        // Payload will go CloudVendorException
+        // Payload will go to CloudVendorException
         CloudVendorException cloudVendorException = new CloudVendorException(
                 cloudVendorNotFoundException.getMessage(),
                 cloudVendorNotFoundException.getCause(),

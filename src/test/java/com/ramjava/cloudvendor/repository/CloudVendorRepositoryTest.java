@@ -1,6 +1,7 @@
 package com.ramjava.cloudvendor.repository;
 
 import com.ramjava.cloudvendor.model.CloudVendor;
+import org.assertj.core.api.AssertionsForClassTypes;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,7 +11,9 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import java.util.List;
 
 
-import static org.assertj.core.api.FactoryBasedNavigableListAssert.assertThat;
+//import static org.assertj.core.api.ClassBasedNavigableIterableAssert.assertThat;
+//import static org.hamcrest.MatcherAssert.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest // DataJpaTest is using embedded db
@@ -29,13 +32,21 @@ class CloudVendorRepositoryTest {
     void tearDown() {
         // Clear off all resources
         cloudVendor = null;
-        cloudVendorRepository.deleteAll();+
+        cloudVendorRepository.deleteAll();
     }
 
+    // Test case SUCCESS
     @Test
     void testFindByVendorName_Found() {
         List<CloudVendor> cloudVendorList = cloudVendorRepository.findByVendorName("Amazon");
         assertThat(cloudVendorList.get(0).getVendorId()).isEqualTo(cloudVendor.getVendorId());
         assertThat(cloudVendorList.get(0).getVendorAddress()).isEqualTo(cloudVendor.getVendorAddress());
+    }
+
+      // Test case FAILURE
+    @Test
+    void testFindByVendorName_NotFound() {
+        List<CloudVendor> cloudVendorList = cloudVendorRepository.findByVendorName("GoogleCloudProvider");
+        assertThat(cloudVendorList.isEmpty()).isTrue();
     }
 }

@@ -1,8 +1,12 @@
 package com.ramjava.cloudvendor.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+//import jakarta.persistence.Entity;
+//import jakarta.persistence.Id;
+//import jakarta.persistence.Table;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "cloud_vendor_info")
@@ -11,13 +15,16 @@ public class CloudVendor {
     private String vendorId;
     private String vendorName;
     private String vendorAddress;
-    private String vendorPhoneNumeber;
+    private String vendorPhoneNumber;
 
-    public CloudVendor(String vendorId, String vendorName, String vendorAddress, String vendorPhoneNumeber) {
+    public CloudVendor(String vendorId, String vendorName, String vendorAddress, String vendorPhoneNumber) {
         this.vendorId = vendorId;
         this.vendorName = vendorName;
         this.vendorAddress = vendorAddress;
-        this.vendorPhoneNumeber = vendorPhoneNumeber;
+        this.vendorPhoneNumber = vendorPhoneNumber;
+    }
+
+    public CloudVendor() {
     }
 
     public String getVendorId() {
@@ -44,11 +51,11 @@ public class CloudVendor {
         this.vendorAddress = vendorAddress;
     }
 
-    public String getVendorPhoneNumeber() {
-        return vendorPhoneNumeber;
+    public String getVendorPhoneNumber() {
+        return vendorPhoneNumber;
     }
 
-    public void setVendorPhoneNumeber(String vendorPhoneNumeber) {
-        this.vendorPhoneNumeber = vendorPhoneNumeber;
+    public void setVendorPhoneNumber(String vendorPhoneNumber) {
+        this.vendorPhoneNumber = vendorPhoneNumber;
     }
 }
